@@ -7,10 +7,12 @@ import Login from "./pages/Login";
 import MyAppointments from "./pages/MyAppointments";
 import MyProfile from "./pages/MyProfile";
 import Appointment from "./pages/Appointment";
+import Navbar from "./components/Navbar";
 function App() {
   return (
     <>
       <div className="mx-4 sm:mx-[10%]">
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/About" element={<About />}></Route>
