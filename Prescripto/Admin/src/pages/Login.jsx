@@ -41,6 +41,7 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             type="email"
+            placeholder="admin@priscripto.com"
             required
           />
         </div>
@@ -51,6 +52,7 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             type="password"
+            placeholder="qwerty123"
             required
           />
         </div>
