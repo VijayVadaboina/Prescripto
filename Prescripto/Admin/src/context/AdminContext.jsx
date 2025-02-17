@@ -12,7 +12,7 @@ const AdminContextProvider = (props) => {
     setAToken,
     backendUrl,
   };
-
+  console.log(value);
   return (
     <AdminContext.Provider value={value}>
       {props.children}

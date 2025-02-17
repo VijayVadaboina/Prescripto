@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
+import { assets } from "../assets/assets";
 import axios from "axios";
 import { AdminContext } from "../context/AdminContext";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [state, setState] = useState("Admin");
@@ -10,7 +12,7 @@ export default function Login() {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-      if (state === "admin") {
+      if (state.toLocaleLowerCase() === "admin") {
         const { data } = await axios.post(backendUrl + "/api/admin/login", {
           email,
           password,
@@ -18,6 +20,8 @@ export default function Login() {
         if (data.success) {
           localStorage.setItem("aToken", data.token);
           setAToken(data.token);
+          toast.success("Login successfull");
+          console.log(data.token);
         } else {
           toast.error(data.message);
         }
