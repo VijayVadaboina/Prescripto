@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { assets } from "../../assets/assets";
 import { AdminContext } from "../../context/AdminContext";
 import { toast } from "react-toastify";
@@ -73,13 +73,18 @@ export default function AddDoctor() {
         <div className="flex items-center gap-4 mb-8 text-gray-500">
           <label htmlFor="doc-img">
             <img
-              onChange={(e) => setDocImg(e.target.files[0])}
               className="w-16 bg-gray-100 rounded-full cursor-pointer"
               src={docImg ? URL.createObjectURL(docImg) : assets.upload_area}
-              alt=""
+              alt="docs img"
             />
           </label>
-          <input type="file" name="" id="doc-img" hidden />
+          <input
+            onChange={(e) => setDocImg(e.target.files[0])}
+            type="file"
+            name=""
+            id="doc-img"
+            hidden
+          />
           <p>
             upload doctor <br /> picture
           </p>
@@ -124,8 +129,7 @@ export default function AddDoctor() {
               <select
                 onChange={(e) => setExperience(e.target.value)}
                 value={experience}
-                name=""
-                id=""
+                id="experience"
               >
                 <option value="1 year">1 year</option>
                 <option value="2 years">2 years</option>
@@ -158,8 +162,7 @@ export default function AddDoctor() {
                 onChange={(e) => setSpeciality(e.target.value)}
                 value={speciality}
                 className="border rounded px-3 py-2"
-                name=""
-                id=""
+                id="speciality"
               >
                 <option value="General physician">General physician</option>
                 <option value="Gynecologist">Gynecologist</option>
