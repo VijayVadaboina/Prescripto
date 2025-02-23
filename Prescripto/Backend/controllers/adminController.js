@@ -29,7 +29,7 @@ const addDoctor = async (req, res) => {
       !fees ||
       !address
     ) {
-      return res.json({ success: flase, message: "Missing Details" });
+      return res.json({ success: false, message: "Missing Details" });
     }
     if (!validator.isEmail(email)) {
       return res.json({ success: false, message: "Invalid mail address" });
@@ -64,7 +64,7 @@ const addDoctor = async (req, res) => {
     await newDoctor.save();
     res.json({ success: true, message: "Doctor added Successfully" });
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     res.json({ success: false, message: error });
   }
 };
