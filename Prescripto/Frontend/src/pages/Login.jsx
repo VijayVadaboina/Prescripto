@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { backendUrl, token, setToken } = useContext(AppContext);
+  const { backendUrl, token, setToken, loadUserProfileData } =
+    useContext(AppContext);
   const [state, setState] = useState("Sign Up");
 
   const [email, setEmail] = useState("");
@@ -39,6 +40,13 @@ export default function Login() {
           localStorage.setItem("token", data.token);
           setToken(data.token);
           toast.success(data.message);
+          console.log(data.token);
+          setTimeout(async () => {
+            await loadUserProfileData();
+            navigate("/");
+          }, 500);
+          // await loadUserProfileData(); // Load profile after login
+          // navigate("/");
         } else {
           toast.error(data.message);
         }
@@ -49,6 +57,7 @@ export default function Login() {
   };
   useEffect(() => {
     if (token) {
+      loadUserProfileData();
       navigate("/");
     }
   }, [token]);
