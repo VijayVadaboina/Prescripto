@@ -45,6 +45,19 @@ const AppContextProvider = (props) => {
       toast.error(error.message);
     }
   };
+  const value = {
+    doctors,
+    getDoctorsData,
+    currencySymbol,
+    token,
+    setToken,
+    backendUrl,
+    userData,
+    setUserData,
+    loadUserProfileData,
+    isLoading,
+    setIsLoading,
+  };
   useEffect(() => {
     getDoctorsData();
   }, []);
@@ -80,19 +93,7 @@ const AppContextProvider = (props) => {
       }
     );
   }, []);
-  const value = {
-    doctors,
-    getDoctorsData,
-    currencySymbol,
-    token,
-    setToken,
-    backendUrl,
-    userData,
-    setUserData,
-    loadUserProfileData,
-    isLoading,
-    setIsLoading,
-  };
+
   return (
     <AppContext.Provider value={value}>{props.children}</AppContext.Provider>
   );

@@ -7,7 +7,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   //const [token, setToken] = useState(true);
-  const { token, setToken } = useContext(AppContext);
+  const { token, setToken, userData } = useContext(AppContext);
   const logout = () => {
     setToken(false);
     localStorage.removeItem("token");
